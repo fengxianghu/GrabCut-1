@@ -109,7 +109,8 @@ if __name__ == '__main__':
     else:
         print("No input image given, so loading default image, messi5.jpg \n")
         print("Correct Usage: python grabcut.py <filename> \n")
-        filename = 'messi5.jpg'
+        #filename = 'messi5.jpg'
+        filename = 'daten.jpg'
 
     img = cv.imread(filename)
     img2 = img.copy()                               # a copy of original image
@@ -117,18 +118,24 @@ if __name__ == '__main__':
     output = np.zeros(img.shape,np.uint8)           # output image to be shown
 
     # input and output windows
-    cv.namedWindow('output')
-    cv.namedWindow('input')
-    cv.setMouseCallback('input',onmouse)
-    cv.moveWindow('input',img.shape[1]+10,90)
+    cv.namedWindow('output', 1)
+    cv.namedWindow('input', 1)
+
+    cv.setMouseCallback('input', onmouse)
+    #cv.moveWindow('input', img.shape[1] + 10, 90)
+
 
     print(" Instructions: \n")
     print(" Draw a rectangle around the object using right mouse button \n")
 
     while(1):
 
+
         cv.imshow('output',output)
+
         cv.imshow('input',img)
+
+
         k = cv.waitKey(1)
 
         # key bindings
